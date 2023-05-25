@@ -1,0 +1,71 @@
+h1 {
+    background-color: blue;
+    color: white;
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 50px;
+}
+label{
+    font-size: 25px;
+    color: blue;
+}
+button{
+    background-color: blue;
+    color: white;
+    font-size: 20px;
+    width: 100%;
+    border-radius: 5px;
+    padding-top: 5px;
+    margin-top: 5px;
+}
+#search-input {
+    width: 100%;
+    border-radius: 5px;
+    padding-bottom: 10px;
+}
+.search-size{
+    background-color: white;
+    height: 100%;
+    width: 20%;
+    float: left;
+    margin-left: 10px;
+}
+.show-size{
+    height: 100%;
+    width: 79%;
+    float: right;
+    padding-left: 20px;
+}
+.container{
+    display: inline;
+    flex-wrap: flex;
+}
+.btn{
+    background-color: gray;
+    margin-top: 10px;
+}
+.forecast{
+    background-color: aqua;
+    color: black;
+    list-style: none;
+    width: 18%;
+    height: 180px;
+    display: inline-block;
+    flex-wrap: flex;
+    margin-left: 5px;
+    padding-top: 5px;
+}
+.forecast h3{
+    font-size: 16px;
+    text-align: left;
+    padding-top: 3px;
+}
+.currentday{
+    background-color: brown;
+    color: white;
+    list-style: none;
+    padding-left: 20px;
+    height: 150px;
+    width: 92%;
+    margin-left: 3px;
+}
