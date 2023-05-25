@@ -2,7 +2,6 @@ var searchInput = document.getElementById('search-input')
 var searchBtn = document.querySelector(".search-btn")
 var resultEl = document.querySelector(".show-size")
 var historyEl = document.querySelector(".search-history")
-var btnELs = document.querySelectorAll(".btn")
 var cityEl = "";
 var apiKeyEl = "63f111d13dbf89c52eb18d5426a99934";
 var historySearch = JSON.parse(localStorage.getItem("search-history")) || []
@@ -37,6 +36,8 @@ function getCity (url){
         for (var i = 1; i < 6; i++){
             // var dateEl = currentDate.add(i,'day')
             // console.log(dateEl)
+            var aaaa = dayjs()
+            var bbb = aaaa.add(i,'day')
             var dataRow = document.createElement("ul")
             dataRow.classList.add('forecast')
             var cityName = document.createElement('h3')
@@ -45,7 +46,8 @@ function getCity (url){
             var humRow  = document.createElement("li")
             var windRow = document.createElement("li")
             // var currentDate = dayjs().format('DD/MM/YYYY')
-            cityName.textContent = currentDate
+            bbb = bbb.format('DD/MM/YYYY')
+            cityName.textContent = bbb
             tempRow.textContent = "Temp: " + data.list[i].main.temp + " F";
             humRow.textContent = "Humidity: " + data.list[i].main.humidity + " %";
             windRow.textContent = "Wind speed: " + data.list[i].wind.speed +" MPH";
@@ -64,6 +66,7 @@ function showhistory (historySearch){
     for ( var i = 0; i < historySearch.length; i++){
         var pastSearch = document.createElement('button')
         pastSearch.classList.add("btn")
+        pastSearch.setAttribute('data-search', historySearch[i])
         pastSearch.textContent = historySearch[i]
         historyEl.appendChild(pastSearch)
     }
@@ -80,4 +83,13 @@ searchBtn.addEventListener("click", function(){
     localSto(cityEl)
     var urlSeacrh = "https://api.openweathermap.org/data/2.5/forecast?q=" + cityEl + "&appid=" + apiKeyEl;
     getCity(urlSeacrh)
+    return
+})
+
+document.querySelectorAll('.btn').forEach(function(btn){
+    btn.addEventListener('click',function(event){
+        var cityInputHis = this.dataset.search
+        var urlSeacrh = "https://api.openweathermap.org/data/2.5/forecast?q=" + cityInputHis + "&appid=" + apiKeyEl;
+        getCity(urlSeacrh)
+    })
 })
