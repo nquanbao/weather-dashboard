@@ -65,7 +65,9 @@ button{
     color: white;
     list-style: none;
     padding-left: 20px;
-    height: 150px;
+    height: 200px;
     width: 92%;
     margin-left: 3px;
+    display: inline-block;
+    flex-wrap: flex;
 }

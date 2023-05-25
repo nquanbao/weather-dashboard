@@ -13,31 +13,30 @@ function getCity (url){
         return response.json()
     })
     .then(function(data){
-        var currentDate = dayjs().format('DD/MM/YYYY')
-        // var dateEl = currentDate.add(i,'day')
-        // console.log(dateEl)
-        var dataRow = document.createElement("p")
+            var currentDate = dayjs().format('DD/MM/YYYY')
+            var dataRow = document.createElement("p")
             dataRow.classList.add('currentday')
             var cityName = document.createElement('h3')
             var dateRow = document.createElement("li")
             var tempRow = document.createElement("li")
             var humRow  = document.createElement("li")
             var windRow = document.createElement("li")
-            // var currentDate = dayjs().format('DD/MM/YYYY')
-            cityName.textContent = data.city.name + " (" + currentDate + ")"
-            tempRow.textContent = "Temp: " + data.list[0].main.temp + " F";
+            var iconEl = document.createElement('img')
+            var iconUrl = "https://openweathermap.org/img/wn/" + data.list[0].weather[0].icon+".png"
+            iconEl.setAttribute("src",iconUrl)
+            cityName.textContent = data.city.name + " (" + currentDate + ") "
+            tempRow.textContent = "Temp: " + data.list[0].main.temp + " °F";
             humRow.textContent = "Humidity: " + data.list[0].main.humidity + " %";
             windRow.textContent = "Wind speed: " + data.list[0].wind.speed +" MPH";
             resultEl.appendChild(dataRow)
             dataRow.appendChild(cityName)
+            dataRow.appendChild(iconEl)
             dataRow.appendChild(tempRow)
             dataRow.appendChild(humRow)
             dataRow.appendChild(windRow)
         for (var i = 1; i < 6; i++){
-            // var dateEl = currentDate.add(i,'day')
-            // console.log(dateEl)
-            var aaaa = dayjs()
-            var bbb = aaaa.add(i,'day')
+            var currentDay = dayjs()
+            var nextDay = currentDay.add(i,'day')
             var dataRow = document.createElement("ul")
             dataRow.classList.add('forecast')
             var cityName = document.createElement('h3')
@@ -45,14 +44,17 @@ function getCity (url){
             var tempRow = document.createElement("li")
             var humRow  = document.createElement("li")
             var windRow = document.createElement("li")
-            // var currentDate = dayjs().format('DD/MM/YYYY')
-            bbb = bbb.format('DD/MM/YYYY')
-            cityName.textContent = bbb
-            tempRow.textContent = "Temp: " + data.list[i].main.temp + " F";
+            var iconEls = document.createElement('img')
+            var iconUrls = "https://openweathermap.org/img/wn/" + data.list[i].weather[0].icon+".png"
+            iconEls.setAttribute("src",iconUrls)
+            nextDay = nextDay.format('DD/MM/YYYY')
+            cityName.textContent = nextDay
+            tempRow.textContent = "Temp: " + data.list[i].main.temp + " °F";
             humRow.textContent = "Humidity: " + data.list[i].main.humidity + " %";
             windRow.textContent = "Wind speed: " + data.list[i].wind.speed +" MPH";
             resultEl.appendChild(dataRow)
             dataRow.appendChild(cityName)
+            dataRow.appendChild(iconEls)
             dataRow.appendChild(tempRow)
             dataRow.appendChild(humRow)
             dataRow.appendChild(windRow)
