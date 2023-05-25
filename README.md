@@ -33,8 +33,8 @@ If your README is long, add a table of contents to make it easy for users to fin
 ## Usage
 
 Screenshot :
-![alt sreenshot](./assets/images/Screenshot%202023-05-11%20at%2011.27.14%20PM.png)
-[deployed link](https://nquanbao.github.io/code-quiz-final/)
+![alt sreenshot](./Screenshot%202023-05-25%20at%2010.52.11%20PM.png)
+[deployed link](https://nquanbao.github.io/weather-dashboard/)
 ## Credits
 
 List your collaborators, if any, with links to their GitHub profiles.
