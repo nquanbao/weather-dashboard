@@ -1,8 +1,10 @@
+//variable 
 var searchInput = document.getElementById('search-input')
 var searchBtn = document.querySelector(".search-btn")
 var resultEl = document.querySelector(".show-size")
 var historyEl = document.querySelector(".search-history")
 var cityEl = "";
+//API key for OpenWeatherMap
 var apiKeyEl = "63f111d13dbf89c52eb18d5426a99934";
 var historySearch = JSON.parse(localStorage.getItem("search-history")) || []
 
@@ -13,6 +15,7 @@ function getCity (url){
         return response.json()
     })
     .then(function(data){
+        //Today weather 
             var currentDate = dayjs().format('DD/MM/YYYY')
             var dataRow = document.createElement("p")
             dataRow.classList.add('currentday')
@@ -34,6 +37,7 @@ function getCity (url){
             dataRow.appendChild(tempRow)
             dataRow.appendChild(humRow)
             dataRow.appendChild(windRow)
+        // Weather for next 5 days
         for (var i = 1; i < 6; i++){
             var currentDay = dayjs()
             var nextDay = currentDay.add(i,'day')
@@ -64,6 +68,7 @@ function getCity (url){
         console.log("Something went wrong!")
     })
 }
+//Save history search 
 function showhistory (historySearch){
     for ( var i = 0; i < historySearch.length; i++){
         var pastSearch = document.createElement('button')
@@ -73,13 +78,15 @@ function showhistory (historySearch){
         historyEl.appendChild(pastSearch)
     }
 }
+
 showhistory(historySearch)
+
 //local storage
 function localSto (datainput){
     historySearch.push(datainput)
     localStorage.setItem("search-history",JSON.stringify(historySearch))
 }
-
+//EventListner for Search button
 searchBtn.addEventListener("click", function(){
     cityEl = searchInput.value 
     localSto(cityEl)
@@ -88,6 +95,7 @@ searchBtn.addEventListener("click", function(){
     return
 })
 
+//EventListner for each search history
 document.querySelectorAll('.btn').forEach(function(btn){
     btn.addEventListener('click',function(event){
         var cityInputHis = this.dataset.search
