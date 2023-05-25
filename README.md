@@ -24,10 +24,12 @@ If your README is long, add a table of contents to make it easy for users to fin
 
 #1 Create a repository on GitHub with README file then copy SSH code.
 #2 Create a folder on local computer and then do " Git clone <SHH code>"
-#3 Creat a index.html file, assets folder include css, images, and pdf folder.
-#3 Update the change to GitHub.
-#4 Coding the HTML with CSS with VS Code (index, css, and readme)
-#5 Update the change to GitHub again.
+#3 Creat a index.html file, css, javascript.
+#4 Update the change to GitHub.
+#5 Sign up OpenWeatherMap account to create an API key.
+#6 Coding the HTML with CSS with VS Code (index, css, javascript and readme)
+#7 Update the change to GitHub again.
+#8 Deployed repo 
 ## Usage
 
 Screenshot :
