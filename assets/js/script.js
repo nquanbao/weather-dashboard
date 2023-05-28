@@ -78,23 +78,28 @@ function showhistory (historySearch){
         historyEl.appendChild(pastSearch)
     }
 }
-
-showhistory(historySearch)
-
+function showlastHis (historySearch ){
+    var i = historySearch.length - 1;
+    var pastSearch = document.createElement('button')
+        pastSearch.classList.add("btn")
+        pastSearch.setAttribute('data-search', historySearch[i])
+        pastSearch.textContent = historySearch[i]
+        historyEl.appendChild(pastSearch)
+}
 //local storage
 function localSto (datainput){
     historySearch.push(datainput)
     localStorage.setItem("search-history",JSON.stringify(historySearch))
 }
+showhistory(historySearch)
 //EventListner for Search button
 searchBtn.addEventListener("click", function(){
     cityEl = searchInput.value 
     localSto(cityEl)
     var urlSeacrh = "https://api.openweathermap.org/data/2.5/forecast?q=" + cityEl + "&appid=" + apiKeyEl;
     getCity(urlSeacrh)
-    return
+    showlastHis(historySearch)
 })
-
 //EventListner for each search history
 document.querySelectorAll('.btn').forEach(function(btn){
     btn.addEventListener('click',function(event){
