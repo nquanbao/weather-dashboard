@@ -4,6 +4,7 @@ var searchBtn = document.querySelector(".search-btn")
 var resultEl = document.querySelector(".show-size")
 var historyEl = document.querySelector(".search-history")
 var cityEl = "";
+
 //API key for OpenWeatherMap
 var apiKeyEl = "63f111d13dbf89c52eb18d5426a99934";
 var historySearch = JSON.parse(localStorage.getItem("search-history")) || []
@@ -15,6 +16,7 @@ function getCity (url){
         return response.json()
     })
     .then(function(data){
+
         //Today weather 
             var currentDate = dayjs().format('DD/MM/YYYY')
             var dataRow = document.createElement("p")
@@ -37,6 +39,7 @@ function getCity (url){
             dataRow.appendChild(tempRow)
             dataRow.appendChild(humRow)
             dataRow.appendChild(windRow)
+
         // Weather for next 5 days
         for (var i = 1; i < 6; i++){
             var currentDay = dayjs()
@@ -68,6 +71,7 @@ function getCity (url){
         console.log("Something went wrong!")
     })
 }
+
 //Save history search 
 function showhistory (historySearch){
     for ( var i = 0; i < historySearch.length; i++){
@@ -78,6 +82,8 @@ function showhistory (historySearch){
         historyEl.appendChild(pastSearch)
     }
 }
+
+//Save and show the recent search history immidiately
 function showlastHis (historySearch ){
     var i = historySearch.length - 1;
     var pastSearch = document.createElement('button')
@@ -91,7 +97,9 @@ function localSto (datainput){
     historySearch.push(datainput)
     localStorage.setItem("search-history",JSON.stringify(historySearch))
 }
+
 showhistory(historySearch)
+
 //EventListner for Search button
 searchBtn.addEventListener("click", function(){
     cityEl = searchInput.value 
@@ -100,6 +108,7 @@ searchBtn.addEventListener("click", function(){
     getCity(urlSeacrh)
     showlastHis(historySearch)
 })
+
 //EventListner for each search history
 document.querySelectorAll('.btn').forEach(function(btn){
     btn.addEventListener('click',function(event){
