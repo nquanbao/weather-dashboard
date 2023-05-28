@@ -33,7 +33,7 @@ If your README is long, add a table of contents to make it easy for users to fin
 ## Usage
 
 Screenshot :
-![alt sreenshot](./Screenshot%202023-05-25%20at%2010.52.11%20PM.png)
+![alt sreenshot](./assets/image/Screenshot%202023-05-25%20at%2010.52.11%20PM.png)
 [deployed link](https://nquanbao.github.io/weather-dashboard/)
 ## Credits
 
